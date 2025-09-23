@@ -1696,6 +1696,15 @@
 
         // Server user limit
         const SERVER_USER_LIMIT = 250;
+
+       // List of CORS proxies to try (fallback options)
+        const corsProxies = [
+            url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+            url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+            url => `https://corsproxy.org/?${encodeURIComponent(url)}`,
+            url => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`,
+            url => `https://cors-anywhere.herokuapp.com/${url}`
+        ];
         
         // State variables
         let autoRefreshInterval = null;
