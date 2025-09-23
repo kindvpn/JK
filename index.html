@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-SAN VPN</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .mobile-container {
+            width: 360px;
+            height: 640px;
+            background-color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 30px 30px 0 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+        
+        .vpn-status {
+            background-color: white;
+            width: 100%;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .status-indicator {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(254, 202, 87, 0.4);
+        }
+        
+        .status-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .connect-btn {
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
+            margin-top: 10px;
+        }
+        
+        .connect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(26, 42, 108, 0.4);
+        }
+        
+        .server-info {
+            background-color: white;
+            width: 100%;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+        
+        .server-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .server-item:last-child {
+            border-bottom: none;
+        }
+        
+        .server-label {
+            color: #666;
+        }
+        
+        .server-value {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .download-section {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+        }
+        
+        .download-text {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .playstore-btn {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
+        }
+        
+        .playstore-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(26, 42, 108, 0.4);
+        }
+        
+        .playstore-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .footer {
+            padding: 15px;
+            text-align: center;
+            background-color: #1a2a6c;
+            color: white;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="header">
+            <div class="logo">E-SAN VPN</div>
+            <div class="tagline">เปิดพารามิเตอร์แบบตัวผ่าน</div>
+            <div class="subtitle">เครื่องหมายเข้าถึงงานอินเตอร์เน็ต</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="vpn-status">
+                <div class="status-indicator">🔒</div>
+                <div class="status-text">VPN พร้อมใช้งาน</div>
+                <button class="connect-btn">เชื่อมต่อตอนนี้</button>
+            </div>
+            
+            <div class="server-info">
+                <div class="server-item">
+                    <span class="server-label">สถานะ:</span>
+                    <span class="server-value">ไม่เชื่อมต่อ</span>
+                </div>
+                <div class="server-item">
+                    <span class="server-label">เซิร์ฟเวอร์:</span>
+                    <span class="server-value">ไทย - กรุงเทพ</span>
+                </div>
+                <div class="server-item">
+                    <span class="server-label">ความเร็ว:</span>
+                    <span class="server-value">72 Mbps</span>
+                </div>
+            </div>
+            
+            <div class="download-section">
+                <div class="download-text">Download the application on Google Play Store</div>
+                <a href="#" class="playstore-btn">
+                    <span class="playstore-icon">▶</span>
+                    <span>ดาวน์โหลด</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            E-SAN VPN © 2023 - การเชื่อมต่อที่ปลอดภัยสำหรับทุกคน
+        </div>
+    </div>
+
+    <script>
+        // Simple VPN connection simulation
+        const connectBtn = document.querySelector('.connect-btn');
+        const statusIndicator = document.querySelector('.status-indicator');
+        const statusText = document.querySelector('.status-text');
+        const serverStatus = document.querySelector('.server-item .server-value');
+        
+        let isConnected = false;
+        
+        connectBtn.addEventListener('click', function() {
+            if (!isConnected) {
+                // Simulate connecting
+                statusIndicator.innerHTML = '🔄';
+                statusText.textContent = 'กำลังเชื่อมต่อ...';
+                connectBtn.textContent = 'กำลังเชื่อมต่อ...';
+                connectBtn.disabled = true;
+                
+                setTimeout(function() {
+                    statusIndicator.innerHTML = '✅';
+                    statusText.textContent = 'เชื่อมต่อแล้ว';
+                    connectBtn.textContent = 'ตัดการเชื่อมต่อ';
+                    connectBtn.disabled = false;
+                    serverStatus.textContent = 'เชื่อมต่อแล้ว';
+                    isConnected = true;
+                }, 2000);
+            } else {
+                // Simulate disconnecting
+                statusIndicator.innerHTML = '🔒';
+                statusText.textContent = 'VPN พร้อมใช้งาน';
+                connectBtn.textContent = 'เชื่อมต่อตอนนี้';
+                serverStatus.textContent = 'ไม่เชื่อมต่อ';
+                isConnected = false;
+            }
+        });
+    </script>
+</body>
+</html>
