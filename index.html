@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JKVPN VIP Service - Premium VPN with High Speed and Security</title>
+    <meta name="description" content="Premium VPN Service. High-speed, secure, and reliable VPN with unlimited bandwidth for all your needs.">
+    <link rel="icon" href="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/j.png">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jkapp.site/">
+    <meta property="og:title" content="JKVPN VIP Service">
+    <meta property="og:description" content="Premium VPN Service. High-speed, secure, and reliable VPN with unlimited bandwidth for all your needs.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/j.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jkapp.site/">
+    <meta property="twitter:title" content="JKVPN VIP Service">
+    <meta property="twitter:description" content="Premium VPN Service. High-speed, secure, and reliable VPN with unlimited bandwidth for all your needs.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/j.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #4a00e0;
+            --secondary: #8e2de2;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #d63031;
+            --info: #3498db;
+            
+            /* Light mode colors */
+            --bg-color: #f8f9fa;
+            --text-color: #1a1a2e;
+            --card-bg: white;
+            --section-bg: white;
+            --section-alt-bg: #f1f3f5;
+        }
+        
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #f8f9fa;
+            --card-bg: #1e1e1e;
+            --section-bg: #1e1e1e;
+            --section-alt-bg: #2d2d2d;
+            --dark: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            border: none;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #fdcb6e;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+        }
+        
+        .language-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .language-options {
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            z-index: 100;
+            display: none;
+            min-width: 150px;
+        }
+        
+        .language-options.show {
+            display: block;
+        }
+        
+        .language-option {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-color);
+        }
+        
+        .language-option:hover {
+            background: rgba(0,0,0,0.05);
+        }
+        
+        .language-flag {
+            width: 20px;
+            height: auto;
+        }
+        
+        /* Floating Social Buttons */
+        .floating-social {
+            position: fixed;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .floating-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .telegram-btn {
+            background: #0088cc;
+        }
+        
+        .facebook-btn {
+            background: #3b5998;
+        }
+        
+        .messenger-btn {
+            background: #006AFF;
+        }
+        
+        .download-btn-floating {
+            background: var(--success);
+        }
+        
+        .floating-tooltip {
+            position: absolute;
+            right: 80px;
+            background: var(--card-bg);
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: var(--text-color);
+            font-size: 18px;
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .floating-btn:hover .floating-tooltip {
+            opacity: 1;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Digital Clock */
+        .digital-clock {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 300px;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .time {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        
+        .date {
+            font-size: 18px;
+            text-align: center;
+            opacity: 0.9;
+        }
+        
+        /* Download APK */
+        .download-apk {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px auto;
+            max-width: 600px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .download-apk h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .download-apk p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .download-btn-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .download-logo {
+            height: 60px;
+            width: auto;
+        }
+        
+        /* New Server Monitor Styles */
+        .server-monitor {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 50px auto;
+            max-width: 1100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .monitor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .monitor-title {
+            color: var(--primary);
+            font-size: 32px;
+        }
+        
+        .total-users {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .last-update {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        .monitor-subtitle {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .server-time {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        
+        .server-time i {
+            color: var(--primary);
+        }
+        
+        .server-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: var(--section-alt-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            table-layout: fixed;
+        }
+        
+        .server-table th {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .server-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            height: 50px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Column Widths */
+        .server-table th:nth-child(1) { width: 25%; } /* Server */
+        .server-table th:nth-child(2) { width: 15%; } /* Status */
+        .server-table th:nth-child(3) { width: 15%; } /* Users */
+        .server-table th:nth-child(4) { width: 15%; } /* Load */
+        .server-table th:nth-child(5) { width: 15%; } /* Ping */
+        
+        .server-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .server-table tr:hover {
+            background: rgba(0, 0, 0, 0.03);
+        }
+        
+        .server-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .circular-flag {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+        
+        .server-name-id {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .server-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .status {
+            padding: 5px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+            text-align: center;
+            min-width: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .status.online {
+            background-color: rgba(46, 204, 113, 0.15);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+        
+        .status.offline {
+            background-color: rgba(231, 76, 60, 0.15);
+            color: #e74c3c;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+        
+        .status.loading {
+            background-color: rgba(243, 156, 18, 0.15);
+            color: #f39c12;
+            border: 1px solid rgba(243, 156, 18, 0.3);
+        }
+        
+        .users-value, .load-value {
+            padding: 5px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+            text-align: center;
+            min-width: 70px;
+        }
+        
+        .users-normal, .load-normal {
+            background-color: rgba(46, 204, 113, 0.15);
+            color: #2ecc71;
+        }
+        
+        .users-busy, .load-medium {
+            background-color: rgba(241, 196, 15, 0.15);
+            color: #f1c40f;
+        }
+        
+        .users-high, .load-high {
+            background-color: rgba(231, 76, 60, 0.15);
+            color: #e74c3c;
+        }
+        
+        .users-full {
+            background-color: rgba(155, 89, 182, 0.15);
+            color: #9b59b6;
+            animation: pulse 2s infinite;
+        }
+        
+        .ping-value {
+            font-weight: bold;
+            padding: 5px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            display: inline-block;
+            text-align: center;
+            min-width: 70px;
+        }
+        
+        .ping-good {
+            background-color: rgba(46, 204, 113, 0.15);
+            color: #2ecc71;
+        }
+        
+        .ping-medium {
+            background-color: rgba(241, 196, 15, 0.15);
+            color: #f1c40f;
+        }
+        
+        .ping-bad {
+            background-color: rgba(231, 76, 60, 0.15);
+            color: #e74c3c;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .monitor-btn {
+            padding: 10px 18px;
+            background: var(--section-alt-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .monitor-btn:hover {
+            background: rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .total-users-count {
+            text-align: center;
+            margin: 20px 0;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+        
+        .total-users-count span {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .user-limit {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #2ecc71;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.4;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 0.4;
+                transform: scale(0.8);
+            }
+        }
+        
+        /* Last update indicator */
+        .last-update-indicator {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: rgba(0, 0, 0, 0.6);
+        }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .server-table {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+            }
+            
+            .server-table th, 
+            .server-table td {
+                padding: 8px 6px;
+                height: 45px;
+                font-size: 0.8rem;
+            }
+            
+            .server-name {
+                font-size: 0.9rem;
+            }
+            
+            .status, .users-value, .load-value, .ping-value {
+                padding: 4px 6px;
+                font-size: 0.7rem;
+                min-width: 60px;
+            }
+            
+            .circular-flag {
+                width: 25px;
+                height: 25px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                margin-top: 15px;
+            }
+            
+            .monitor-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .total-users-count {
+                font-size: 0.9rem;
+                margin: 15px 0;
+            }
+            
+            .status-dot {
+                width: 6px;
+                height: 6px;
+            }
+            
+            .monitor-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 60px 0;
+            background: var(--section-bg);
+        }
+        
+        .pricing-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .pricing-title h2 {
+            font-size: 40px;
+            color: var(--primary);
+        }
+        
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        
+        .plan {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .plan:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plan h3 {
+            font-size: 26px;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        .price {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--text-color);
+        }
+        
+        .price span {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+        }
+        
+        .features li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .order-now-btn {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .order-now-btn:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Package Codes */
+        .package-codes {
+            background: var(--section-alt-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .package-codes h3 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .package-item {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .package-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .package-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .package-logo {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+        
+        .package-name {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0;
+            font-size: 18px;
+        }
+        
+        .package-code {
+            font-family: monospace;
+            font-size: 16px;
+            color: var(--text-color);
+            margin: 10px 0;
+            padding: 8px;
+            background: rgba(0,0,0,0.05);
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .package-item:hover .package-code {
+            background: rgba(0,0,0,0.1);
+        }
+        
+        .package-price {
+            color: var(--success);
+            font-weight: 600;
+            margin-top: auto;
+        }
+        
+        /* Payment */
+        .payment {
+            padding: 60px 0;
+            background: var(--section-alt-bg);
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .method {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        
+        .method-icon {
+            font-size: 40px;
+            color: var(--primary);
+        }
+        
+        .method-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .account-info {
+            background: rgba(0,0,0,0.05);
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 18px;
+            margin: 15px 0;
+            position: relative;
+            width: 100%;
+            text-align: center;
+            color: var(--text-color);
+        }
+        
+        .copy-btn {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Tutorial Video */
+        .tutorial {
+            padding: 60px 0;
+            background: var(--section-bg);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 40px auto 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Gallery */
+        .gallery {
+            padding: 60px 0;
+            background: var(--section-alt-bg);
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 60px 0;
+            background: var(--section-bg);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .plans-container {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .floating-social {
+                right: 15px;
+                gap: 15px;
+            }
+            
+            .floating-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .language-switcher {
+                margin-top: 20px;
+            }
+            
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .digital-clock {
+                max-width: 250px;
+            }
+            
+            .time {
+                font-size: 32px;
+            }
+            
+            .theme-toggle {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .download-btn-container {
+                flex-direction: column;
+            }
+            
+            .download-logo {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Floating Social Buttons -->
+    <div class="floating-social">
+        <a href="https://t.me/jk_vipvpn_bot" class="floating-btn telegram-btn">
+            <i class="fab fa-telegram"></i>
+            <span class="floating-tooltip" data-en="Join Telegram Channel" data-th="เข้าร่วมช่องทาง Telegram" data-my="Telegram Channel ကိုဝင်ရောက်ပါ">Join Telegram Channel</span>
+        </a>
+        <a href="https://www.facebook.com/juehtet2025" class="floating-btn facebook-btn">
+            <i class="fab fa-facebook-f"></i>
+            <span class="floating-tooltip" data-en="Visit Facebook Page" data-th="เยี่ยมชมหน้า Facebook" data-my="Facebook Page ကိုဝင်ရောက်ပါ">Visit Facebook Page</span>
+        </a>
+        <a href="https://m.me/juehtet2025" class="floating-btn messenger-btn">
+            <i class="fab fa-facebook-messenger"></i>
+            <span class="floating-tooltip" data-en="Message Us on Messenger" data-th="ส่งข้อความถึงเราผ่าน Messenger" data-my="Messenger မှာစာပို့ပါ">Message Us on Messenger</span>
+        </a>
+        <a href="https://github.com/THANDARLIN2015/JKVPN/releases/download/V2.2.0/JK.VIP.VPN_2.2.0.apk" class="floating-btn download-btn-floating">
+            <i class="fas fa-download"></i>
+            <span class="floating-tooltip" data-en="Download APK" data-th="ดาวน์โหลด APK" data-my="APK ဒေါင်းလုဒ်ရယူပါ">Download APK</span>
+        </a>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/j.png" alt="JKVPN Logo" class="logo-img">
+                    <div class="logo">JK<span>VPN</span> <span data-en="VIP SERVICE" data-th="บริการ VIP" data-my="VIP ဝန်ဆောင်မှု">VIP SERVICE</span></div>
+                </div>
+                <div class="language-switcher">
+                    <button class="language-btn" id="languageBtn">
+                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="language-flag">
+                        <span data-en="English" data-th="ภาษาอังกฤษ" data-my="အင်္ဂလိပ်">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-options" id="languageOptions">
+                        <div class="language-option" data-lang="en">
+                            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="language-flag">
+                            English
+                        </div>
+                        <div class="language-option" data-lang="th">
+                            <img src="https://flagcdn.com/w20/th.png" alt="Thai" class="language-flag">
+                            ไทย (Thai)
+                        </div>
+                        <div class="language-option" data-lang="my">
+                            <img src="https://flagcdn.com/w20/mm.png" alt="Myanmar" class="language-flag">
+                            မြန်မာ (Myanmar)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1 data-en="Premium VPN Service" data-th="บริการ VPN ระดับพรีเมียม" data-my="အဆင့်မြင့် VPN ဝန်ဆောင်မှု">Premium VPN Service</h1>
+            <p data-en="High-speed, secure, and reliable VPN with unlimited bandwidth for all your needs" 
+               data-th="VPN ความเร็วสูง ปลอดภัย และเชื่อถือได้ พร้อมแบนด์วิธไม่จำกัด สำหรับทุกความต้องการของคุณ" 
+               data-my="မြန်နှုန်းမြင့်၊ လုံခြုံစိတ်ချရပြီး ဒေတာအသုံးပြုမှုအကန့်အသတ်မရှိသော VPN ဝန်ဆောင်မှု">High-speed, secure, and reliable VPN with unlimited bandwidth for all your needs</p>
+            
+            <!-- Digital Clock -->
+            <div class="digital-clock">
+                <div class="time" id="digital-time">00:00:00</div>
+                <div class="date" id="digital-date">Loading date...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download APK -->
+    <section class="container">
+        <div class="download-apk">
+            <h3 data-en="Download Our Latest App Version" data-th="ดาวน์โหลดแอปเวอร์ชันล่าสุดของเรา" data-my="ကျွန်ုပ်တို့၏နောက်ဆုံးထွက် App ကိုဒေါင်းလုဒ်ရယူပါ">Download Our Latest App Version</h3>
+            <p data-en="Get the best VPN experience on your mobile device with our optimized application" 
+               data-th="รับประสบการณ์ VPN ที่ดีที่สุดบนอุปกรณ์มือถือของคุณด้วยแอปพลิเคชันที่ได้รับการปรับปรุงของเรา" 
+               data-my="ကျွန်ုပ်တို့၏အကောင်းဆုံးဖြစ်အောင် ပြုပြင်ထားသော application ဖြင့် သင့်မိုဘိုင်းစက်ပစ္စည်းပေါ်တွင် အကောင်းဆုံး VPN အတွေ့အကြုံကိုရယူပါ">Get the best VPN experience on your mobile device with our optimized application</p>
+            <div class="download-btn-container">
+                <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/j.png" alt="JKVPN Logo" class="download-logo">
+                <a href="https://github.com/THANDARLIN2015/JKVPN/releases/download/V2.2.0/JK.VIP.VPN_2.2.0.apk" class="download-btn">
+                    <i class="fas fa-download"></i> <span data-en="Download APK (v2.2.0)" data-th="ดาวน์โหลด APK (v2.2.0)" data-my="APK ဒေါင်းလုဒ်ရယူပါ (v2.2.0)">Download APK (v2.2.0)</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Server Monitor -->
+    <section class="server-monitor">
+        <div class="container">
+            <div class="monitor-header">
+                <h3 class="monitor-title" data-en="Live Server Status Monitor" data-th="ตรวจสอบสถานะเซิร์ฟเวอร์แบบเรียลไทม์" data-my="Server အခြေအနေကိုတိုက်ရိုက်ကြည့်ရှုရန်">Live Server Status Monitor</h3>
+                <div class="total-users">
+                    <span data-en="Total Online:" data-th="ออนไลน์ทั้งหมด:" data-my="စုစုပေါင်းအသုံးပြုသူ -">Total Online:</span> <span id="total-users">0</span>
+                    <div class="last-update" id="last-update" data-en="Last Update: Never" data-th="อัปเดตล่าสุด: ไม่เคย" data-my="နောက်ဆုံးအချိန် - မရှိသေး">Last Update: Never</div>
+                </div>
+            </div>
+            <p class="monitor-subtitle" data-en="Updated every 15 seconds • Server limit: 250 users per server" 
+               data-th="อัปเดตทุก 15 วินาที • จำกัดผู้ใช้: 250 คนต่อเซิร์ฟเวอร์" 
+               data-my="၁၅စက္ကန့်တိုင်းအသစ်ပြောင်းသည် • Server တစ်ခုလျှင် အသုံးပြုသူ ၂၅၀ အထိသာ">Updated every 15 seconds • Server limit: 250 users per server</p>
+            <div class="server-time">
+                <i class="fas fa-clock"></i>
+                <span id="server-time" data-en="Server Time (Thailand): Loading..." data-th="เวลาเซิร์ฟเวอร์ (ประเทศไทย): กำลังโหลด..." data-my="Server အချိန် (ထိုင်း): လုပ်ဆောင်နေသည်...">Server Time (Thailand): Loading...</span>
+            </div>
+            
+            <table class="server-table">
+                <thead>
+                    <tr>
+                        <th data-en="Server List" data-th="รายการเซิร์ฟเวอร์" data-my="Server စာရင်း">Server List</th>
+                        <th data-en="Status" data-th="สถานะ" data-my="အခြေအနေ">Status</th>
+                        <th data-en="Users" data-th="ผู้ใช้งาน" data-my="အသုံးပြုသူ">Users</th>
+                        <th data-en="Load" data-th="โหลด" data-my="ဝန်">Load</th>
+                        <th data-en="Ping" data-th="ความเร็วตอบสนอง" data-my="ပင့်">Ping</th>
+                    </tr>
+                </thead>
+                <tbody id="server-table-body">
+                    <!-- Server rows will be generated here -->
+                </tbody>
+            </table>
+            
+            <div class="total-users-count">
+                <span data-en="Total Online Users:" data-th="ผู้ใช้งานออนไลน์ทั้งหมด:" data-my="စုစုပေါင်းအသုံးပြုသူ -">Total Online Users:</span> <span id="total-users-count">0</span>
+            </div>
+            
+            <div class="last-update-indicator" id="last-update-indicator">
+                <span data-en="Last updated:" data-th="อัปเดตล่าสุด:" data-my="နောက်ဆုံးအချိန် -">Last updated:</span> <span id="update-time">Never</span>
+            </div>
+            
+            <div class="controls">
+                <button class="monitor-btn" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i> <span data-en="Refresh Status" data-th="รีเฟรชสถานะ" data-my="အခြေအနေအသစ်ပြောင်းရန်">Refresh Status</span>
+                </button>
+                <button class="monitor-btn" id="autoRefreshBtn">
+                    <i class="fas fa-play"></i> <span data-en="Auto Refresh: ON" data-th="รีเฟรชอัตโนมัติ: เปิด" data-my="အလိုအလျောက်ပြောင်းရန် - ဖွင့်">Auto Refresh: ON</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <div class="pricing-title">
+                <h2 data-en="Choose Your VIP Plan" data-th="เลือกแพ็คเกจ VIP ของคุณ" data-my="သင့် VIP Plan ကိုရွေးချယ်ပါ">Choose Your VIP Plan</h2>
+            </div>
+            <div class="plans-container">
+                <!-- VIP PLAN 1 -->
+                <div class="plan">
+                    <h3 data-en="VIP PLAN 1" data-th="แพ็คเกจ VIP 1" data-my="VIP အစီအစဉ် 1">VIP PLAN 1</h3>
+                    <div class="price">50 <span data-en="THB/1month" data-th="บาท/1เดือน" data-my="ဘတ်/1လ">THB/month</span></div>
+                    <ul class="features">
+                        <li data-en="✅ PRICE 50 THB" data-th="✅ ราคา 50 บาท" data-my="✅ ဈေးနှုန်း 50 ဘတ်">✅ PRICE 50 THB</li>
+                        <li data-en="✅ No Ads" data-th="✅ ไม่มีโฆษณา" data-my="✅ ကြော်ငြာမရှိ">✅ No Ads</li>
+                        <li data-en="✅ Unlimited GB" data-th="✅ ใช้ข้อมูลไม่จำกัด" data-my="✅ အကန့်အသတ်မရှိ GB">✅ Unlimited GB</li>
+                        <li data-en="✅ Need Plan" data-th="✅ ต้องมีแพ็คเกจ" data-my="✅ အစီအစဉ်လိုအပ်">✅ Need Plan</li>
+                        <li data-en="✅ Good For All Networks" data-th="✅ ใช้ได้ดีกับทุกเครือข่าย" data-my="✅ ကွန်ရက်အားလုံးအတွက်ကောင်း">✅ Good For All Networks</li>
+                        <li data-en="🎮 Good For Gaming" data-th="🎮 เหมาะสำหรับเล่นเกม" data-my="🎮 ဂိမ်းကစားရန်ကောင်း">🎮 Good For Gaming</li>
+                        <li data-en="💰 Save 50%" data-th="💰 ประหยัด 50%" data-my="💰 ၅၀% သက်သာ">💰 Save 50%</li>
+                        <li data-en="⚡ VIP Support 24/7" data-th="⚡ บริการช่วยเหลือ VIP ตลอด 24 ชั่วโมง" data-my="⚡ VIP အထောက်အပံ့ ၂၄နာရီ">⚡ VIP Support 24/7</li>
+                        <li data-en="🌍 All Server Locations" data-th="🌍 เข้าถึงเซิร์ฟเวอร์ทุกที่" data-my="🌍 Server နေရာအားလုံး">🌍 All Server Locations</li>
+                        <li data-en="🖥️ 2 Dedicated IPs" data-th="🖥️ IP เฉพาะ 2 ที่" data-my="🖥️ အထူး IP ၂ခု">🖥️ 2 Dedicated IPs</li>
+                        <li data-en="🚀 Ultra Speed (1Gbps)" data-th="🚀 ความเร็วสูงสุด (1Gbps)" data-my="🚀 အလွန်မြန်နှုန်း (1Gbps)">🚀 Ultra Speed (1Gbps)</li>
+                        <li data-en="💎 Premium Servers Access" data-th="💎 เข้าถึงเซิร์ฟเวอร์ระดับพรีเมียม" data-my="💎 အဆင့်မြင့် Server များသို့ဝင်ရောက်ခွင့်">💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn" data-en="Order Now" data-th="สั่งซื้อตอนนี้" data-my="ယခုမှာယူပါ">Order Now</a>
+                </div>
+                
+                <!-- VIP PLAN 2 -->
+                <div class="plan">
+                    <h3 data-en="VIP PLAN 2" data-th="แพ็คเกจ VIP 2" data-my="VIP အစီအစဉ် 2">VIP PLAN 2</h3>
+                    <div class="price">100 <span data-en="THB/2month" data-th="บาท/2เดือน" data-my="ဘတ်/2လ">THB/month</span></div>
+                    <ul class="features">
+                        <li data-en="✅ PRICE 100 THB" data-th="✅ ราคا 100 บาท" data-my="✅ ဈေးနှုန်း 100 ဘတ်">✅ PRICE 100 THB</li>
+                        <li data-en="✅ No Ads" data-th="✅ ไม่มีโฆษณา" data-my="✅ ကြော်ငြာမရှိ">✅ No Ads</li>
+                        <li data-en="✅ Unlimited GB" data-th="✅ ใช้ข้อมูลไม่จำกัด" data-my="✅ အကန့်အသတ်မရှိ GB">✅ Unlimited GB</li>
+                        <li data-en="✅ Need Plan" data-th="✅ ต้องมีแพ็คเกจ" data-my="✅ အစီအစဉ်လိုအပ်">✅ Need Plan</li>
+                        <li data-en="✅ Good For All Networks" data-th="✅ ใช้ได้ดีกับทุกเครือข่าย" data-my="✅ ကွန်ရက်အားလုံးအတွက်ကောင်း">✅ Good For All Networks</li>
+                        <li data-en="🎮 Good For Gaming" data-th="🎮 เหมาะสำหรับเล่นเกม" data-my="🎮 ဂိမ်းကစားရန်ကောင်း">🎮 Good For Gaming</li>
+                        <li data-en="💰 Save 50%" data-th="💰 ประหยัด 50%" data-my="💰 ၅၀% သက်သာ">💰 Save 50%</li>
+                        <li data-en="⚡ VIP Support 24/7" data-th="⚡ บริการช่วยเหลือ VIP ตลอด 24 ชั่วโมง" data-my="⚡ VIP အထောက်အပံ့ ၂၄နာရီ">⚡ VIP Support 24/7</li>
+                        <li data-en="🌍 All Server Locations" data-th="🌍 เข้าถึงเซิร์ฟเวอร์ทุกที่" data-my="🌍 Server နေရာအားလုံး">🌍 All Server Locations</li>
+                        <li data-en="🖥️ 2 Dedicated IPs" data-th="🖥️ IP เฉพาะ 2 ที่" data-my="🖥️ အထူး IP ၂ခု">🖥️ 2 Dedicated IPs</li>
+                        <li data-en="🚀 Ultra Speed (1Gbps)" data-th="🚀 ความเร็วสูงสุด (1Gbps)" data-my="🚀 အလွန်မြန်နှုန်း (1Gbps)">🚀 Ultra Speed (1Gbps)</li>
+                        <li data-en="💎 Premium Servers Access" data-th="💎 เข้าถึงเซิร์ฟเวอร์ระดับพรีเมียม" data-my="💎 အဆင့်မြင့် Server များသို့ဝင်ရောက်ခွင့်">💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn" data-en="Order Now" data-th="สั่งซื้อตอนนี้" data-my="ယခုမှာယူပါ">Order Now</a>
+                </div>
+                
+                <!-- VIP PLAN 3 -->
+                <div class="plan">
+                    <h3 data-en="VIP PLAN 3" data-th="แพ็คเกจ VIP 3" data-my="VIP အစီအစဉ် 3">VIP PLAN 3</h3>
+                    <div class="price">150 <span data-en="THB/3month" data-th="บาท/3เดือน" data-my="ဘတ်/3လ">THB/month</span></div>
+                    <ul class="features">
+                        <li data-en="✅ PRICE 150 THB" data-th="✅ ราคา 150 บาท" data-my="✅ ဈေးနှုန်း 150 ဘတ်">✅ PRICE 150 THB</li>
+                        <li data-en="✅ No Ads" data-th="✅ ไม่มีโฆษณา" data-my="✅ ကြော်ငြာမရှိ">✅ No Ads</li>
+                        <li data-en="✅ Unlimited GB" data-th="✅ ใช้ข้อมูลไม่จำกัด" data-my="✅ အကန့်အသတ်မရှိ GB">✅ Unlimited GB</li>
+                        <li data-en="✅ Need Plan" data-th="✅ ต้องมีแพ็คเกจ" data-my="✅ အစီအစဉ်လိုအပ်">✅ Need Plan</li>
+                        <li data-en="✅ Good For All Networks" data-th="✅ ใช้ได้ดีกับทุกเครือข่าย" data-my="✅ ကွန်ရက်အားလုံးအတွက်ကောင်း">✅ Good For All Networks</li>
+                        <li data-en="🎮 Good For Gaming" data-th="🎮 เหมาะสำหรับเล่นเกม" data-my="🎮 ဂိမ်းကစားရန်ကောင်း">🎮 Good For Gaming</li>
+                        <li data-en="💰 Save 50%" data-th="💰 ประหยัด 50%" data-my="💰 ၅၀% သက်သာ">💰 Save 50%</li>
+                        <li data-en="⚡ VIP Support 24/7" data-th="⚡ บริการช่วยเหลือ VIP ตลอด 24 ชั่วโมง" data-my="⚡ VIP အထောက်အပံ့ ၂၄နာရီ">⚡ VIP Support 24/7</li>
+                        <li data-en="🌍 All Server Locations" data-th="🌍 เข้าถึงเซิร์ฟเวอร์ทุกที่" data-my="🌍 Server နေရာအားလုံး">🌍 All Server Locations</li>
+                        <li data-en="🖥️ 2 Dedicated IPs" data-th="🖥️ IP เฉพาะ 2 ที่" data-my="🖥️ အထူး IP ၂ခု">🖥️ 2 Dedicated IPs</li>
+                        <li data-en="🚀 Ultra Speed (1Gbps)" data-th="🚀 ความเร็วสูงสุด (1Gbps)" data-my="🚀 အလွန်မြန်နှုန်း (1Gbps)">🚀 Ultra Speed (1Gbps)</li>
+                        <li data-en="💎 Premium Servers Access" data-th="💎 เข้าถึงเซิร์ฟเวอร์ระดับพรีเมียม" data-my="💎 အဆင့်မြင့် Server များသို့ဝင်ရောက်ခွင့်">💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn" data-en="Order Now" data-th="สั่งซื้อตอนนี้" data-my="ယခုမှာယူပါ">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Codes -->
+    <section class="container">
+        <div class="package-codes">
+            <h3 data-en="Our Package Codes" data-th="รหัสแพ็คเกจของเรา" data-my="ကျွန်ုပ်တို့၏ Package Codes များ">Our Package Codes</h3>
+            <div class="package-grid">
+                <div class="package-item" onclick="copyToClipboard('*117*30#')">
+                    <div class="package-header">
+                        <img src="https://raw.githubusercontent.com/THANDARLIN2015/Test/main/image/dtac.png" alt="DTAC Logo" class="package-logo">
+                        <div class="package-name" data-en="DTAC JAIDEE PLAN" data-th="DTAC Jaidee" data-my="DTAC Jaidee">DTAC Jaidee</div>
+                    </div>
+                    <div class="package-code">*117*30#</div>
+                    <div class="package-price">30 <span data-en="THB" data-th="บาท" data-my="ဘတ်">THB</span></div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('*900*8131#')">
+                    <div class="package-header">
+                        <img src="https://raw.githubusercontent.com/THANDARLIN2015/Test/main/image/true.png" alt="TRUE Logo" class="package-logo">
+                        <div class="package-name" data-en="TRUE JAIDEE PLAN" data-th="TRUE Jaidee" data-my="TRUE Jaidee">TRUE Jaidee</div>
+                    </div>
+                    <div class="package-code">*900*8131#</div>
+                    <div class="package-price">31.50 <span data-en="THB" data-th="บาท" data-my="ဘတ်">THB</span></div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('DTAC APP')">
+                    <div class="package-header">
+                        <img src="https://raw.githubusercontent.com/THANDARLIN2015/Test/main/image/dtac.png" alt="DTAC Logo" class="package-logo">
+                        <div class="package-name" data-en="DTAC GAMING PLAN" data-th="แพ็คเกจเกม DTAC" data-my="DTAC Gaming အစီအစဉ်">DTAC Gaming Plan</div>
+                    </div>
+                    <div class="package-code">DTAC APP</div>
+                    <div class="package-price">-</div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('*900*3809#')">
+                    <div class="package-header">
+                        <img src="https://raw.githubusercontent.com/THANDARLIN2015/Test/main/image/true.png" alt="TRUE Logo" class="package-logo">
+                        <div class="package-name" data-en="TRUE VIBER PLAN" data-th="แพ็คเกจ Viber True" data-my="True Viber အစီအစဉ်">True Viber Plan</div>
+                    </div>
+                    <div class="package-code">*900*3809#</div>
+                    <div class="package-price">53 <span data-en="THB" data-th="บาท" data-my="ဘတ်">THB</span></div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('*900*1347#')">
+                    <div class="package-header">
+                        <img src="https://raw.githubusercontent.com/THANDARLIN2015/Test/main/image/true.png" alt="TRUE Logo" class="package-logo">
+                        <div class="package-name" data-en="TRUE VDO PLAN" data-th="แพ็คเกจวีดีโอ True" data-my="True VDO အစီအစဉ်">True VDO Plan</div>
+                    </div>
+                    <div class="package-code">*900*1347#</div>
+                    <div class="package-price">54 <span data-en="THB" data-th="บาท" data-my="ဘတ်">THB</span></div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('*777*885#')">
+                    <div class="package-header">
+                        <img src="https://raw.githubusercontent.com/THANDARLIN2015/Test/main/image/ais.png" alt="AIS Logo" class="package-logo">
+                        <div class="package-name" data-en="AIS PLAY PLAN" data-th="AIS PLAY 64 KBPS" data-my="AIS PLAY 64 KBPS">AIS PLAY 64 KBPS</div>
+                    </div>
+                    <div class="package-code">*777*885#</div>
+                    <div class="package-price">64 <span data-en="THB" data-th="บาท" data-my="ဘတ်">THB</span></div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('*777*7067#')">
+                    <div class="package-header">
+                        <img src="https://raw.githubusercontent.com/THANDARLIN2015/Test/main/image/ais.png" alt="AIS Logo" class="package-logo">
+                        <div class="package-name" data-en="AIS 64 KBPS PLAN" data-th="AIS PLAY 32 KBPS" data-my="AIS PLAY 32 KBPS">AIS PLAY 32 KBPS</div>
+                    </div>
+                    <div class="package-code">*777*7067#</div>
+                    <div class="package-price">32 <span data-en="THB" data-th="บาท" data-my="ဘတ်">THB</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment -->
+    <section class="payment">
+        <div class="container">
+            <div class="pricing-title">
+                <h2 data-en="Payment Methods" data-th="วิธีการชำระเงิน" data-my="ငွေပေးချေမှုနည်းလမ်းများ">Payment Methods</h2>
+                <p data-en="We accept these payment options" data-th="เรารับวิธีการชำระเงินเหล่านี้" data-my="ကျွန်ုပ်တို့သည် ဤငွေပေးချေမှုနည်းလမ်းများကိုလက်ခံပါသည်">We accept these payment options</p>
+            </div>
+            <div class="payment-methods">
+                <!-- Binance -->
+                <div class="method">
+                    <div class="method-icon">
+                        <i class="fab fa-bitcoin"></i>
+                    </div>
+                    <div class="method-name">Binance</div>
+                    <div class="qr-code">
+                        <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/bnc.png" alt="Binance QR Code" style="width:100%;height:100%;object-fit:contain;">
+                    </div>
+                    <div class="account-info">21976442</div>
+                    <button class="copy-btn" onclick="copyToClipboard('21976442')">
+                        <i class="fas fa-copy"></i> <span data-en="Copy Address" data-th="คัดลอกที่อยู่" data-my="လိပ်စာကိုကူးယူပါ">Copy Address</span>
+                    </button>
+                </div>
+                
+                <!-- Bangkok Bank -->
+                <div class="method">
+                    <div class="method-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="method-name" data-en="Bangkok Bank" data-th="ธนาคารกรุงเทพ" data-my="ဘန်ကောက် ဘဏ်">Bangkok Bank</div>
+                    <div class="qr-code">
+                        <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/pp.png" alt="Bangkok Bank QR Code" style="width:100%;height:100%;object-fit:contain;">
+                    </div>
+                    <div class="account-info" data-en="Account: 0724683644" data-th="บัญชี: 0724683644" data-my="အကောင့် - 0724683644">Account: 0724683644</div>
+                    <div class="account-info" data-en="Name: MR - JUE HTET KHAING " data-th="ชื่อ: MR - JUE HTET KHAING " data-my="အမည် - MR - JUE HTET KHAING ">Name: MR - JUE HTET KHAING</div>
+                    <button class="copy-btn" onclick="copyToClipboard('0724683644')">
+                        <i class="fas fa-copy"></i> <span data-en="Copy Account" data-th="คัดลอกบัญชี" data-my="အကောင့်ကိုကူးယူပါ">Copy Account</span>
+                    </button>
+                </div>
+                
+                <!-- Other Methods -->
+                <div class="method">
+                    <div class="method-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="method-name" data-en="Other Methods" data-th="วิธีการอื่นๆ" data-my="အခြားနည်းလမ်းများ">Other Methods</div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <p data-en="KBZ Pay, WavePay, AYA Pay, TrueMoney" data-th="KBZ Pay, WavePay, AYA Pay, TrueMoney" data-my="KBZ Pay, WavePay, AYA Pay, TrueMoney">KBZ Pay, WavePay, AYA Pay, TrueMoney</p>
+                        <p data-en="Contact us for other payment options" data-th="ติดต่อเราสำหรับวิธีการชำระเงินอื่นๆ" data-my="အခြားငွေပေးချေမှုနည်းလမ်းများအတွက်ဆက်သွယ်ပါ">Contact us for other payment options</p>
+                    </div>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn" data-en="Contact on Messenger" data-th="ติดต่อผ่าน Messenger" data-my="Messenger မှာဆက်သွယ်ပါ">Contact on Messenger</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorial Video -->
+    <section class="tutorial">
+        <div class="container">
+            <div class="pricing-title">
+                <h2 data-en="How to Use Our Service" data-th="วิธีใช้บริการของเรา" data-my="ကျွန်ုပ်တို့၏ဝန်ဆောင်မှုကိုအသုံးပြုနည်း">How to Use Our Service</h2>
+                <p data-en="Watch this tutorial video to get started" data-th="ดูวิดีโอสอนวิธีใช้เพื่อเริ่มต้น" data-my="စတင်ရန်ဤသင်ခန်းစာဗီဒီယိုကိုကြည့်ပါ">Watch this tutorial video to get started</p>
+            </div>
+            <div class="video-container">
+                <!-- Replace with your actual video embed code -->
+                <iframe src="https://www.youtube.com/embed/O4CYlx89GFE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery">
+        <div class="container">
+            <div class="pricing-title">
+                <h2 data-en="Our Service" data-th="บริการของเรา" data-my="ကျွန်ုပ်တို့၏ဝန်ဆောင်မှု">Our Service</h2>
+                <p data-en="Experience the best VPN service" data-th="สัมผัสประสบการณ์ VPN ที่ดีที่สุด" data-my="အကောင်းဆုံး VPN ဝန်ဆောင်မှုကိုခံစားပါ">Experience the best VPN service</p>
+            </div>
+            <div class="gallery-container">
+                <!-- Image 1 -->
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/v1.png" alt="JKVPN App" class="gallery-img">
+                </div>
+                
+                <!-- Image 2 -->
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/v2.png" alt="Speed Test" class="gallery-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <div class="pricing-title">
+                <h2 data-en="Contact Us" data-th="ติดต่อเรา" data-my="ကျွန်ုပ်တို့ကိုဆက်သွယ်ပါ">Contact Us</h2>
+                <p data-en="Get in touch for support" data-th="ติดต่อเพื่อรับความช่วยเหลือ" data-my="အကူအညီရယူရန်ဆက်သွယ်ပါ">Get in touch for support</p>
+            </div>
+            <div class="social-links">
+                <a href="https://t.me/jk_vipvpn_bot" class="social-link"><i class="fab fa-telegram"></i></a>
+                <a href="https://www.facebook.com/juehtet2025" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://m.me/juehtet2025" class="social-link"><i class="fab fa-facebook-messenger"></i></a>
+                <a href="tel:0827472711" class="social-link"><i class="fas fa-phone"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 JKVPN <span data-en="VIP SERVICE" data-th="บริการ VIP" data-my="VIP ဝန်ဆောင်မှု">VIP SERVICE</span>. <span data-en="All rights reserved." data-th="สงวนลิขสิทธิ์" data-my="အခွင့်အရေးအားလုံးရှိသည်">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved user preference, if any
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            updateThemeIcon();
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark-mode' : '');
+            updateThemeIcon();
+        });
+        
+        function updateThemeIcon() {
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+
+        // Language switcher functionality
+        const languageBtn = document.getElementById('languageBtn');
+        const languageOptions = document.getElementById('languageOptions');
+        
+        // Check for saved language preference
+        let currentLanguage = localStorage.getItem('language') || 'en';
+        
+        // Function to change language
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en], [data-th], [data-my]').forEach(element => {
+                if (element.dataset[lang]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.value = element.dataset[lang];
+                    } else {
+                        element.textContent = element.dataset[lang];
+                    }
+                }
+            });
+            
+            // Update language button
+            const selectedOption = document.querySelector(`.language-option[data-lang="${lang}"]`);
+            if (selectedOption) {
+                const flag = selectedOption.querySelector('.language-flag').src;
+                const text = selectedOption.textContent.trim();
+                
+                languageBtn.innerHTML = `
+                    <img src="${flag}" alt="${text}" class="language-flag">
+                    ${text}
+                    <i class="fas fa-chevron-down"></i>
+                `;
+            }
+            
+            // Update digital clock format based on language
+            updateDigitalClock();
+        }
+        
+        // Initialize language
+        changeLanguage(currentLanguage);
+        
+        languageBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageOptions.classList.toggle('show');
+        });
+        
+        // Close language options when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!languageBtn.contains(e.target) && !languageOptions.contains(e.target)) {
+                languageOptions.classList.remove('show');
+            }
+        });
+        
+        // Change language when option is clicked
+        document.querySelectorAll('.language-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const lang = option.getAttribute('data-lang');
+                changeLanguage(lang);
+                languageOptions.classList.remove('show');
+            });
+        });
+
+        // Digital Clock with error handling and language support
+        function updateDigitalClock() {
+            try {
+                const now = new Date();
+                
+                // Time formatting options based on language
+                const timeOptions = { 
+                    timeZone: 'Asia/Bangkok',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false 
+                };
+                
+                // Date formatting options based on language
+                let dateOptions;
+                if (currentLanguage === 'th') {
+                    dateOptions = { 
+                        timeZone: 'Asia/Bangkok',
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        locale: 'th-TH'
+                    };
+                } else if (currentLanguage === 'my') {
+                    dateOptions = { 
+                        timeZone: 'Asia/Bangkok',
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        locale: 'my-MM'
+                    };
+                } else {
+                    dateOptions = { 
+                        timeZone: 'Asia/Bangkok',
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    };
+                }
+                
+                const timeFormatter = new Intl.DateTimeFormat(currentLanguage === 'th' ? 'th-TH' : currentLanguage === 'my' ? 'my-MM' : 'en-US', timeOptions);
+                const timeStr = timeFormatter.format(now);
+                
+                const dateFormatter = new Intl.DateTimeFormat(currentLanguage === 'th' ? 'th-TH' : currentLanguage === 'my' ? 'my-MM' : 'en-US', dateOptions);
+                const dateStr = dateFormatter.format(now);
+                
+                document.getElementById('digital-time').textContent = timeStr;
+                document.getElementById('digital-date').textContent = dateStr;
+            } catch (e) {
+                console.error("Clock error:", e);
+                document.getElementById('digital-time').textContent = new Date().toLocaleTimeString();
+                document.getElementById('digital-date').textContent = new Date().toLocaleDateString();
+            }
+        }
+
+        // Server list with names and URLs
+        const servers = [
+            { id: 'th-01', name: 'TH-01', url: 'http://45.136.255.72:81/server/online', country: 'th' },
+            { id: 'th-02', name: 'TH-02', url: 'http://212.80.215.220:81/server/online', country: 'th' },
+            { id: 'th-03', name: 'TH-03', url: 'http://45.136.255.108:81/server/online', country: 'th' },
+            { id: 'th-04', name: 'TH-04', url: 'http://43.229.150.11:8888/server/online', country: 'th' },
+            { id: 'kr-01', name: 'KR-01', url: 'http://example.com:8080/server/online', country: 'kr' },
+            { id: 'jp-01', name: 'JP-01', url: 'http://example.com:8081/server/online', country: 'jp' }
+        ];
+
+        // Server user limit
+        const SERVER_USER_LIMIT = 250;
+        
+        // List of CORS proxies to try (fallback options)
+        const corsProxies = [
+            url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+            url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+            url => `https://corsproxy.org/?${encodeURIComponent(url)}`,
+            url => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`,
+            url => `https://cors-anywhere.herokuapp.com/${url}`
+        ];
+        
+        // State variables
+        let autoRefreshInterval = null;
+        let pingInterval = null;
+        let serverUsers = {};
+        let serverBasePings = {};
+        let serverLoads = {};
+        let isAutoRefreshEnabled = true;
+        
+        // Initialize the dashboard
+        function initDashboard() {
+            const tableBody = document.getElementById('server-table-body');
+            tableBody.innerHTML = '';
+            
+            servers.forEach(server => {
+                const serverRow = document.createElement('tr');
+                serverRow.id = `row-${server.id}`;
+                serverRow.innerHTML = `
+                    <td>
+                        <div class="server-info">
+                            <div class="circular-flag ${server.country}" style="background-image: url('https://flagcdn.com/w40/${server.country}.png')"></div>
+                            <div class="server-name-id">
+                                <div class="server-name">${server.name}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status loading">Checking...</div>
+                    </td>
+                    <td>
+                        <div class="users-value" id="users-${server.id}">-<span class="user-limit">/250</span></div>
+                    </td>
+                    <td>
+                        <div class="load-value" id="load-${server.id}">-</div>
+                    </td>
+                    <td>
+                        <div class="ping-value" id="ping-${server.id}">- ms</div>
+                    </td>
+                `;
+                
+                tableBody.appendChild(serverRow);
+                serverUsers[server.id] = 0;
+                serverBasePings[server.id] = 0;
+                serverLoads[server.id] = 0;
+            });
+            
+            document.getElementById('serverCount').textContent = servers.length;
+        }
+        
+        // Fetch server data with CORS proxy fallback
+        async function fetchServerData(server, proxyIndex = 0) {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000); // Reduced timeout for faster response
+            
+            try {
+                // Try direct connection first
+                if (proxyIndex === 0) {
+                    try {
+                        const startTime = Date.now();
+                        const response = await fetch(server.url, {
+                            signal: controller.signal,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        const ping = Date.now() - startTime;
+                        clearTimeout(timeoutId);
+                        
+                        if (!response.ok) throw new Error('Direct request failed');
+                        
+                        const data = await response.text();
+                        return { data, error: null, proxyUsed: null, ping };
+                    } catch (directError) {
+                        console.log(`Direct request failed for ${server.name}, trying proxies...`);
+                    }
+                }
+                
+                // If direct failed, try proxies
+                if (proxyIndex < corsProxies.length) {
+                    const proxyUrl = corsProxies[proxyIndex](server.url);
+                    const startTime = Date.now();
+                    const response = await fetch(proxyUrl, {
+                        signal: controller.signal,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    const ping = Date.now() - startTime;
+                    clearTimeout(timeoutId);
+                    
+                    if (!response.ok) throw new Error('Proxy request failed');
+                    
+                    const data = await response.text();
+                    return { data, error: null, proxyUsed: corsProxies[proxyIndex].name || `Proxy ${proxyIndex + 1}`, ping };
+                } else {
+                    throw new Error('All proxies failed');
+                }
+            } catch (error) {
+                clearTimeout(timeoutId);
+                
+                // Try next proxy if available
+                if (proxyIndex < corsProxies.length - 1) {
+                    console.log(`Proxy ${proxyIndex + 1} failed for ${server.name}, trying next...`);
+                    return fetchServerData(server, proxyIndex + 1);
+                }
+                
+                return { data: null, error: error.message, proxyUsed: null, ping: 0 };
+            }
+        }
+        
+        // Update server status in the UI
+        function updateServerStatus(server, users, ping = 0, error = null) {
+            const statusElement = document.getElementById(`row-${server.id}`).querySelector('.status');
+            const pingElement = document.getElementById(`ping-${server.id}`);
+            const usersElement = document.getElementById(`users-${server.id}`);
+            const loadElement = document.getElementById(`load-${server.id}`);
+            
+            if (error) {
+                statusElement.textContent = 'Offline';
+                statusElement.className = 'status offline';
+                pingElement.textContent = '- ms';
+                pingElement.className = 'ping-value';
+                usersElement.innerHTML = '-<span class="user-limit">/250</span>';
+                usersElement.className = 'users-value';
+                loadElement.textContent = '-';
+                loadElement.className = 'load-value';
+                serverUsers[server.id] = 0;
+                serverLoads[server.id] = 0;
+                updateTotalUsers();
+                return;
+            }
+            
+            // Update user count with color coding
+            usersElement.innerHTML = `${users}<span class="user-limit">/250</span>`;
+            serverUsers[server.id] = users;
+            updateTotalUsers();
+            
+            // Set user count color based on value
+            if (users <= 180) {
+                usersElement.className = 'users-value users-normal';
+            } else if (users <= 220) {
+                usersElement.className = 'users-value users-busy';
+            } else if (users < 250) {
+                usersElement.className = 'users-value users-high';
+            } else {
+                usersElement.className = 'users-value users-full';
+            }
+            
+            // Calculate load percentage based on user count
+            const loadPercentage = Math.min(100, Math.round((users / SERVER_USER_LIMIT) * 100));
+            serverLoads[server.id] = loadPercentage;
+            
+            // Update load display with text instead of percentage
+            let loadText = '';
+            if (users <= 180) {
+                loadText = 'Normal';
+                loadElement.className = 'load-value load-normal';
+            } else if (users <= 220) {
+                loadText = 'Busy';
+                loadElement.className = 'load-value load-medium';
+            } else if (users < 250) {
+                loadText = 'High-Load';
+                loadElement.className = 'load-value load-high';
+            } else {
+                loadText = 'Full';
+                loadElement.className = 'load-value load-high';
+            }
+            
+            loadElement.textContent = loadText;
+            
+            // Update ping
+            if (ping > 0) {
+                serverBasePings[server.id] = ping;
+                updatePingDisplay(server.id);
+            } else {
+                pingElement.textContent = '- ms';
+                pingElement.className = 'ping-value';
+            }
+            
+            // Update status with blinking dot
+            statusElement.innerHTML = '<div class="status-dot"></div> Online';
+            statusElement.className = 'status online';
+        }
+        
+        // Update ping display with fluctuation
+        function updatePingDisplay(serverId) {
+            const pingElement = document.getElementById(`ping-${serverId}`);
+            const basePing = serverBasePings[serverId];
+            
+            if (basePing > 0) {
+                // Add some fluctuation to simulate real network conditions
+                const fluctuation = Math.random() * 20 - 10; // -10 to +10 ms
+                const currentPing = Math.max(1, Math.round(basePing + fluctuation));
+                
+                pingElement.textContent = `${currentPing} ms`;
+                
+                // Set ping color based on value
+                if (currentPing < 100) {
+                    pingElement.className = 'ping-value ping-good';
+                } else if (currentPing < 200) {
+                    pingElement.className = 'ping-value ping-medium';
+                } else {
+                    pingElement.className = 'ping-value ping-bad';
+                }
+            }
+        }
+        
+        // Update total online users
+        function updateTotalUsers() {
+            const totalUsersElement = document.getElementById('total-users');
+            const totalUsersCountElement = document.getElementById('total-users-count');
+            const total = Object.values(serverUsers).reduce((sum, users) => sum + users, 0);
+            totalUsersElement.textContent = total;
+            totalUsersCountElement.textContent = total;
+        }
+        
+        // Update last update time
+        function updateLastUpdateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('update-time').textContent = timeString;
+            
+            // Update the last update text in the header
+            const lastUpdateElement = document.getElementById('last-update');
+            if (currentLanguage === 'th') {
+                lastUpdateElement.textContent = `อัปเดตล่าสุด: ${timeString}`;
+            } else if (currentLanguage === 'my') {
+                lastUpdateElement.textContent = `နောက်ဆုံးအချိန် - ${timeString}`;
+            } else {
+                lastUpdateElement.textContent = `Last Update: ${timeString}`;
+            }
+        }
+        
+        // Check all servers status
+        async function checkAllServers() {
+            const promises = servers.map(async server => {
+                try {
+                    const { data, error, proxyUsed, ping } = await fetchServerData(server);
+                    
+                    if (error) {
+                        console.error(`Error fetching data for ${server.name}:`, error);
+                        updateServerStatus(server, 0, 0, error);
+                        return;
+                    }
+                    
+                    // Parse the response - assuming it's a number or JSON with online users
+                    let users = 0;
+                    
+                    try {
+                        // Try to parse as JSON first
+                        const jsonData = JSON.parse(data);
+                        // If it's an object, look for common properties that might contain the user count
+                        if (typeof jsonData === 'object') {
+                            users = jsonData.online || jsonData.users || jsonData.count || 0;
+                        } else {
+                            users = parseInt(data) || 0;
+                        }
+                    } catch (e) {
+                        // If parsing as JSON fails, try to parse as plain number
+                        users = parseInt(data) || 0;
+                    }
+                    
+                    // For demonstration, if the server returns 0, generate a random number
+                    if (users === 0 && !error) {
+                        users = Math.floor(Math.random() * 250);
+                    }
+                    
+                    updateServerStatus(server, users, ping, null);
+                    
+                    if (proxyUsed) {
+                        console.log(`${server.name} data fetched via ${proxyUsed} with ping ${ping}ms`);
+                    } else {
+                        console.log(`${server.name} data fetched directly with ping ${ping}ms`);
+                    }
+                    
+                } catch (error) {
+                    console.error(`Unexpected error for ${server.name}:`, error);
+                    updateServerStatus(server, 0, 0, error.message);
+                }
+            });
+            
+            await Promise.allSettled(promises);
+            updateLastUpdateTime();
+        }
+        
+        // Update ping for all servers
+        function updateAllPings() {
+            servers.forEach(server => {
+                updatePingDisplay(server.id);
+            });
+        }
+        
+        // Toggle auto refresh
+        function toggleAutoRefresh() {
+            const autoRefreshBtn = document.getElementById('autoRefreshBtn');
+            const icon = autoRefreshBtn.querySelector('i');
+            
+            if (isAutoRefreshEnabled) {
+                clearInterval(autoRefreshInterval);
+                autoRefreshBtn.innerHTML = '<i class="fas fa-pause"></i> Auto Refresh: OFF';
+                autoRefreshBtn.style.background = 'rgba(231, 76, 60, 0.2)';
+                isAutoRefreshEnabled = false;
+            } else {
+                autoRefreshInterval = setInterval(checkAllServers, 15000); // Refresh every 15 seconds
+                autoRefreshBtn.innerHTML = '<i class="fas fa-play"></i> Auto Refresh: ON';
+                autoRefreshBtn.style.background = '';
+                isAutoRefreshEnabled = true;
+            }
+        }
+        
+        // Update server time (Thailand timezone) with language support
+        function updateServerTime() {
+            try {
+                const options = {
+                    timeZone: 'Asia/Bangkok',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                };
+                const formatter = new Intl.DateTimeFormat(currentLanguage === 'th' ? 'th-TH' : currentLanguage === 'my' ? 'my-MM' : 'en-US', options);
+                const thaiTime = formatter.format(new Date());
+                
+                const serverTimeElement = document.getElementById('server-time');
+                if (currentLanguage === 'th') {
+                    serverTimeElement.textContent = `เวลาเซิร์ฟเวอร์ (ประเทศไทย): ${thaiTime}`;
+                } else if (currentLanguage === 'my') {
+                    serverTimeElement.textContent = `Server အချိန် (ထိုင်း): ${thaiTime}`;
+                } else {
+                    serverTimeElement.textContent = `Server Time (Thailand): ${thaiTime}`;
+                }
+            } catch (e) {
+                console.error("Server time error:", e);
+                document.getElementById('server-time').textContent = `Server Time: ${new Date().toLocaleTimeString()}`;
+            }
+        }
+
+        // Copy to clipboard function with language support
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                let message;
+                if (currentLanguage === 'th') {
+                    message = 'คัดลอกไปยังคลิปบอร์ด: ' + text;
+                } else if (currentLanguage === 'my') {
+                    message = 'Clipboard သို့ကူးယူပြီး: ' + text;
+                } else {
+                    message = 'Copied to clipboard: ' + text;
+                }
+                alert(message);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        // Initial calls and set intervals
+        document.addEventListener('DOMContentLoaded', function() {
+            initDashboard();
+            updateServerTime();
+            updateDigitalClock();
+            
+            // Add event listeners
+            document.getElementById('refreshBtn').addEventListener('click', checkAllServers);
+            document.getElementById('autoRefreshBtn').addEventListener('click', toggleAutoRefresh);
+            
+            // Initial check
+            checkAllServers();
+            
+            // Server status check every 15 seconds
+            autoRefreshInterval = setInterval(checkAllServers, 15000);
+            
+            // Ping update every 5 seconds
+            pingInterval = setInterval(updateAllPings, 5000);
+            
+            // Update server time every second
+            setInterval(updateServerTime, 1000);
+            setInterval(updateDigitalClock, 1000);
+        });
+    </script>
+</body>
+</html>
