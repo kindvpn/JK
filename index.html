@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPN အကြောင်း သိကောင်းစရာ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pyidaungsu', 'Myanmar3', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            color: #1a2a6c;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid #fdbb2d;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #b21f1f;
+            margin: 1.2rem 0 0.8rem 0;
+        }
+        
+        nav {
+            background-color: #1a2a6c;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #fdbb2d;
+            color: #1a2a6c;
+        }
+        
+        .content-section {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight {
+            background-color: #fff9e6;
+            border-left: 4px solid #fdbb2d;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        footer {
+            background-color: #1a2a6c;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>VPN အကြောင်း သိကောင်းစရာ</h1>
+            <p>Virtual Private Network ၏ အခြေခံအချက်အလက်များ</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#what-is-vpn">VPN ဆိုတာ ဘာလဲ</a></li>
+            <li><a href="#how-vpn-works">VPN ဘယ်လိုအလုပ်လုပ်သလဲ</a></li>
+            <li><a href="#benefits">VPN ၏ အကျိုးကျေးဇူးများ</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="what-is-vpn" class="content-section">
+            <h2>VPN ဆိုတာ ဘာလဲ</h2>
+            <p>VPN (Virtual Private Network) ဆိုသည်မှာ အင်တာနက်ပေါ်တွင် လုံခြုံစိတ်ချရသော ချိတ်ဆက်မှုတစ်ခုကို ဖန်တီးပေးသည့် နည်းပညာတစ်ခုဖြစ်သည်။ VPN သည် သင့်ကွန်ပျူတာ၊ စမတ်ဖုန်း သို့မဟုတ် တက်ဘလက်ကို VPN ၏ ဆာဗာတစ်ခုခုသို့ လုံခြုံစွာ ချိတ်ဆက်ပေးပြီး သင့်အင်တာနက်လှိုင်းကြောင်းကို လုံခြုံစေသည်။</p>
+            
+            <div class="highlight">
+                <p>VPN ကို အသုံးပြုခြင်းဖြင့် သင့်အင်တာနက်အသုံးပြုမှုကို ကာကွယ်ပေးပြီး၊ သင့်ဒေတာများကို Hacker များနှင့် တတိယပါတီများ၏ ခြေရာခံမှုမှ ကာကွယ်ပေးနိုင်သည်။</p>
+            </div>
+        </section>
+        
+        <section id="how-vpn-works" class="content-section">
+            <h2>VPN ဘယ်လိုအလုပ်လုပ်သလဲ</h2>
+            <p>VPN သည် သင့်ဒီဗိုင်းနှင့် VPN ဆာဗာအကြားတွင် လုံခြုံသော "tunnel" တစ်ခုကို ဖန်တီးပေးသည်။ ဤ tunnel အတွင်းရှိ ဒေတာအားလုံးကို encryption လုပ်ထားသဖြင့် အခြားသူများက ဖတ်ရှုခြင်း သို့မဟုတ် ခြေရာခံခြင်းမှ ကာကွယ်ပေးသည်။</p>
+            
+            <ol>
+                <li>သင် VPN ဆော့ဖ်ဝဲကို ဖွင့်လိုက်သောအခါ၊ ထို VPN သည် သင့်ဒီဗိုင်းနှင့် VPN ဆာဗာအကြား လုံခြုံသော ချိတ်ဆက်မှုကို တည်ဆောက်ပေးသည်။</li>
+                <li>သင့်ဒီဗိုင်းမှ ထွက်ခွာသော ဒေတာများကို encryption လုပ်ပြီး VPN ဆာဗာသို့ ပို့ဆောင်သည်။</li>
+                <li>VPN ဆာဗာက ဒေတာများကို decrypt လုပ်ပြီး အင်တာနက်ပေါ်သို့ ပို့ဆောင်သည်။</li>
+                <li>ပြန်လာသော ဒေတာများကို VPN ဆာဗာမှ လက်ခံရရှိပြီး encrypt လုပ်ကာ သင့်ဒီဗိုင်းသို့ ပြန်ပို့ပေးသည်။</li>
+            </ol>
+        </section>
+        
+        <section id="benefits" class="content-section">
+            <h2>VPN ၏ အကျိုးကျေးဇူးများ</h2>
+            
+            <h3>၁။ ဒေတာ လုံခြုံမှု</h3>
+            <p>VPN သည် သင့်အင်တာနက်လှိုင်းကြောင်းကို encryption လုပ်ပေးသောကြောင့် Hacker များ၊ အင်တာနက်ဝန်ဆောင်မှုပေးသူများနှင့် အခြားသူများက သင့်ဒေတာများကို မြင်နိုင်ခြင်း သို့မဟုတ် ခြေရာခံနိုင်ခြင်းမရှိပါ။</p>
+            
+            <h3>၂။ တည်နေရာ ဖုံးကွယ်ခြင်း</h3>
+            <p>VPN ကို အသုံးပြုသောအခါ၊ သင့်အင်တာနက် IP လိပ်စာသည် VPN ဆာဗာ၏ IP လိပ်စာဖြင့် အစားထိုးသွားသည်။ ဤသို့ဖြင့် ဝက်ဘ်ဆိုက်များနှင့် အွန်လိုင်းဝန်ဆောင်မှုများက သင့်အား VPN ဆာဗာ၏ တည်နေရာမှ ဝင်ရောက်အသုံးပြုနေသူအဖြစ် မြင်ရသည်။</p>
+            
+            <h3>၃။ ဒေသန္တရ ကန့်သတ်ချက်များ ကျော်လွှားခြင်း</h3>
+            <p>တစ်ချို့သော ဝက်ဘ်ဆိုက်များနှင့် ဝန်ဆောင်မှုများသည် ဒေသအလိုက် ကန့်သတ်ထားတတ်သည်။ VPN ကို အသုံးပြု၍ ထိုကန့်သတ်ချက်ရှိသော ဒေသရှိ ဆာဗာများသို့ ချိတ်ဆက်ကာ ကန့်သတ်ချက်များကို ကျော်လွှားနိုင်သည်။</p>
+            
+            <h3>၄။ အများသုံးဝိုင်ဖိုင်များတွင် လုံခြုံမှု</h3>
+            <p>စတားဘတ်ကဖီး၊ ဟိုတယ် သို့မဟုတ် လေဆိပ်ကဲ့သို့သော အများသုံးဝိုင်ဖိုင်များတွင် VPN အသုံးပြုခြင်းဖြင့် သင့်ဒေတာများကို လုံခြုံစေသည်။</p>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 VPN အကြောင်း သိကောင်းစရာ | အွန်လိုင်းလုံခြုံရေး ဗဟုသုတများ</p>
+        </div>
+    </footer>
+</body>
+</html>
